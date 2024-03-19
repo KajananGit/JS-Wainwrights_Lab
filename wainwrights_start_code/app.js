@@ -1,5 +1,8 @@
 let wainwrightsData;
-const wainwrightsList = document.querySelector("#wainwrights-list")
+const wainwrightsList = document.querySelector("#wainwrights-list");
+const wainwrightsForm = document.querySelector("#wainwrights-form");
+
+
 
 const getAllWainwrights = async () => {
     const response = await fetch("https://raw.githubusercontent.com/annahndr/annahndr.github.io/master/wainwrights_data/wainwrights.json");
@@ -30,5 +33,12 @@ const listNewItem = (item) => {
 
     wainwrightsList.appendChild(list);
 }
+
+wainwrightsForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const result = event.target["user-input"].value;
+    console.log(result);
+});
+
 
 getAllWainwrights();
