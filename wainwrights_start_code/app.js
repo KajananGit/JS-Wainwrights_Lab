@@ -36,9 +36,19 @@ const listNewItem = (item) => {
 
 wainwrightsForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const result = event.target["user-input"].value;
-    console.log(result);
+
+    const userInputValue = event.target["user-input"].value;
+
+    wainwrightsList.innerText = "";
+
+    const result = wainwrightsData.filter((data) => {
+        if(data.name.toLowerCase().includes(userInputValue.toLowerCase())){
+            listNewItem(data);
+        }
+    })
+    
 });
+
 
 
 getAllWainwrights();
