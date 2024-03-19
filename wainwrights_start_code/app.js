@@ -40,9 +40,17 @@ wainwrightsForm.addEventListener("submit", (event) => {
     const userInputValue = event.target["user-input"].value;
 
     wainwrightsList.innerText = "";
+    const templist = document.createElement("li");
+    const awaitingMessage = document.createElement("p");
+
+    awaitingMessage.innerText = "Awaiting API...";
+    templist.appendChild(awaitingMessage);
+    wainwrightsList.appendChild(templist);
+
 
     const result = wainwrightsData.filter((data) => {
         if(data.name.toLowerCase().includes(userInputValue.toLowerCase())){
+            wainwrightsList.innerText = "";
             listNewItem(data);
         }
     })
